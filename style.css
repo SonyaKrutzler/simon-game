@@ -1,0 +1,46 @@
+
+
+html {
+    padding: 20px;
+    margin: 60px;
+    margin-bottom: 40px;
+    margin-top: 40px;
+}
+
+body {
+    margin: 10px;
+    background: darkgray;
+}
+
+.colour {
+    padding: 20% 50%;
+    margin: 10px;
+    border-style: solid;
+    border-color: black;
+}
+
+
+.round {
+    border-radius: 50%;
+    padding: 25px;
+    border-style: solid;
+    border-color: black;
+}
+
+.btn-selected {
+/* background-color: rgba(255, 0, 0, 0.5); */
+opacity: 0.5;
+}
+
+.game {
+    background: #e2e2e2;;
+    padding: 30px;
+    padding-right: 7%;
+    border-style: solid;
+    border-color: black;
+}
+
+.start {
+    background-color: #e61c1c;
+}
+
