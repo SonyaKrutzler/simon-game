@@ -20,6 +20,7 @@ let COUNTER = 0;
 
 startButton.addEventListener("click", () => {
     SEQUENCE.push(randomNumber(1, 4));
+    playSound("https://s3.amazonaws.com/freecodecamp/simonSound2.mp3");
     display(SEQUENCE);
 });
 
@@ -103,7 +104,7 @@ for (let i = 0; i < colourButtons.length; i++) {
         else {
     
             console.log (alert('Failure!'));
-            this.fail.play();
+            playSound("https://s3.amazonaws.com/freecodecamp/simonSound4.mp3");
             
        
             // restart the game 
@@ -119,23 +120,23 @@ const clearCounter = () => {
     document.querySelector('COUNTER') = 0;
 }
 
-function win(){
-    var audio = document.getElementById("audio");
-    audio.win();
-              }
-
-/*function Sound(){
-    mySound = new sound ("https://s3.amazonaws.com/freecodecamp/simonSound4.mp3");
+function playSound(audio){
+    const mySound = new sound (audio);
+    mySound.play();
 }    
-*/
             
-function fail(src) {
-    this.fail = document.createElement("audio2");
-    this.fail.src = src="https://s3.amazonaws.com/freecodecamp/simonSound4.mp3"
-    document.body.appendChild(this.fail);
-    //this.play = function(){
-        this.fail.play();
-    //};
+function sound(src) {
+    this.sound = document.getElementById("audio");
+    this.sound.src = src;
+    this.sound.setAttribute("preload", "auto");
+    this.sound.setAttribute("controls", "none");
+    document.body.appendChild(this.sound);
+    this.play = function(){
+        this.sound.play();
+    }
+    this.stop = function(){
+        this.sound.pause();
+    }
 }
 
 

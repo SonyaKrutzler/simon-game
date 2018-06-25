@@ -44,3 +44,7 @@ opacity: 0.5;
     background-color: #e61c1c;
 }
 
+#audio {
+    display: none;
+}
+
