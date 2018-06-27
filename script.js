@@ -15,13 +15,16 @@ randomNumber(1, 4);
 document.querySelector(".start");
 let startButton = document.querySelector(".start");
 
-let SEQUENCE = [];
-let COUNTER = 0;
-let score = 0;
+let simonGame = {
+    SEQUENCE :[],
+    COUNTER :0,
+    score :0,
+};
+
 
 startButton.addEventListener("click", () => {
-    SEQUENCE.push(randomNumber(1, 4));
-    display(SEQUENCE);
+    simonGame.SEQUENCE.push(randomNumber(1, 4));
+    display(simonGame.SEQUENCE);
     disable(); 
         
 });
@@ -40,18 +43,12 @@ const display = (arr) => {
         setTimeout(()=>{lightUp(arr[i])},1000*i);
 
     }
-    // example array = [1, 3, 3, 1]
-    // this function will call lightUp(1) in 0 seconds
-    // then call lightUp(3) in 2 seconds 
-    // then call lightUp(3) in 4 seconds 
-    // then call lightUp(1) in 6 seconds 
-
+    
 }
 
 
 var delayInMilliseconds=2000;
 setTimeout(function(){
-    //lightUp(randomNumber(1, 4));
 } ,delayInMilliseconds
 
 );
@@ -60,7 +57,6 @@ const lightUp = (num) => {
     
     let element = document.getElementById('button-' + num);
     element.classList.add('btn-selected');
-    // turn off in 1.5 seconds
     setTimeout(() => {lightOff(num)}, 500);
     buttonSound(num);
 }
@@ -83,12 +79,10 @@ const buttonSound=(num)=>{
     
 
 const lightOff = (num) => {
-    //console.log('IM TURNING OFF');
     let element = document.getElementById('button-' + num);
     element.classList.remove('btn-selected');
 
 }
-
 
 
 const getButtons = () => {
@@ -101,26 +95,22 @@ const getButtons = () => {
 }
 
 
-
 const colourButtons = document.getElementsByClassName('colour');
 
 
 for (let i = 0; i < colourButtons.length; i++) {
     
     colourButtons[i].addEventListener("click", function () {
-        if (SEQUENCE[COUNTER]==colourButtons[i].value) {
-            (COUNTER =COUNTER+1);
+        if (simonGame.SEQUENCE[simonGame.COUNTER]==colourButtons[i].value) {
+            (simonGame.COUNTER =simonGame.COUNTER+1);
         
-         if   (COUNTER===SEQUENCE.length) {
-                (COUNTER = 0);
+         if   (simonGame.COUNTER===simonGame.SEQUENCE.length) {
+                (simonGame.COUNTER = 0);
 
-                // automatically start the next pattern
                 setTimeout(function() {
-                    SEQUENCE.push(randomNumber(1, 4));
-                    display(SEQUENCE);
-                    (score = score +1); 
-                    //showScore();
-                    calculateScore();
+                    simonGame.SEQUENCE.push(randomNumber(1, 4));
+                    display(simonGame.SEQUENCE);
+                    changeScore( simonGame.score +1);
                 }, 500);
 
 
@@ -129,18 +119,11 @@ for (let i = 0; i < colourButtons.length; i++) {
         }
         else {
     
-            // console.log (alert('Failure!'));
             playSound("Wrong-answer-sound-effect.mp3");
-            //setTimeout(() => {restart(num)}, 1500);
-            //document.location.reload();
             restart();
             enable();
-            clearScore();
-            
-       
-            // restart the game 
-            // SEQUENCE = []
-            // COUNTER = 0
+            changeScore(0);
+
 
         }
     }
@@ -149,14 +132,14 @@ for (let i = 0; i < colourButtons.length; i++) {
 
 
 const restart = () => {
-    SEQUENCE = [];
+    simonGame.SEQUENCE = [];
     clearCounter();
-    clearScore();
+    changeScore(0);
     enable();
 }
 
 const clearCounter = () => {
-    COUNTER = 0;
+    simonGame.COUNTER = 0;
 }
 
 function playSound(audio){
@@ -188,14 +171,9 @@ function enable() {
 }
 
 
-const calculateScore = () => {
-    document.getElementById("myButton1").value=score;
-
-}
-
-const clearScore = () => {
-    document.getElementById("myButton1").value=0;
-    score = 0;
+const changeScore = (newScore) => {
+    document.getElementById("myButton1").value=newScore;
+    score = newScore;
 }
 
  
