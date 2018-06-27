@@ -12,6 +12,10 @@ body {
     background: darkgray;
 }
 
+h1 {
+    font-size: 60px;
+}
+
 .colour {
     padding: 20% 50%;
     margin: 10px;
