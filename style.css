@@ -48,3 +48,16 @@ opacity: 0.5;
     display: none;
 }
 
+
+.btn-dark {
+    color: #fff;
+    background-color: #343a40;
+    border-color: #ffffff;
+}
+
+.score {
+    padding: 10px;
+    background-color: #a5d61a57;
+    border-style: dashed;
+    border-color: blueviolet;
+}
