@@ -147,9 +147,11 @@ for (let i = 0; i < colourButtons.length; i++) {
     );
 }
 
+
 const restart = () => {
     SEQUENCE = [];
     clearCounter();
+    clearScore();
     enable();
 }
 
@@ -185,18 +187,6 @@ function enable() {
     document.querySelector(".start").disabled = false;
 }
 
-/*function showScore(){
-    document.getElementById("myButton1").value="";
-     let score=0
-
-    if(score = score +1){
-        return score;
-
-    };
-}
-*/
-
-// wrap into one function??
 
 const calculateScore = () => {
     document.getElementById("myButton1").value=score;
@@ -204,8 +194,9 @@ const calculateScore = () => {
 }
 
 const clearScore = () => {
+    document.getElementById("myButton1").value=0;
     score = 0;
 }
 
-// ^^^
  
+
