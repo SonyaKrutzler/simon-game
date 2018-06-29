@@ -46,13 +46,6 @@ const display = (arr) => {
     
 }
 
-
-var delayInMilliseconds=2000;
-setTimeout(function(){
-} ,delayInMilliseconds
-
-);
-
 const lightUp = (num) => {
     
     let element = document.getElementById('button-' + num);
@@ -173,7 +166,7 @@ function enable() {
 
 const changeScore = (newScore) => {
     document.getElementById("myButton1").value=newScore;
-    score = newScore;
+    simonGame.score = newScore;
 }
 
  

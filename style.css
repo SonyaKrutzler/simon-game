@@ -4,7 +4,7 @@ html {
     padding: 20px;
     margin: 60px;
     margin-bottom: 40px;
-    margin-top: 15px;
+    margin-top: 5px;
 }
 
 body {
@@ -13,7 +13,8 @@ body {
 }
 
 h1 {
-    font-size: 60px;
+    font-size: 50px;
+    letter-spacing: 7px;
 }
 
 .colour {
@@ -63,8 +64,24 @@ opacity: 0.5;
 }
 
 .score {
+    padding: 10px 25px;
+    background-color: #000000;
+    border-style: solid;
+    border-color: white;
+    border-width: 3px;
+    color: whitesmoke;
+    font-size: 20px;
+}
+
+
+.altScore {
     padding: 10px;
     background-color: #a5d61a57;
     border-style: dashed;
     border-color: blueviolet;
+}
+
+.container {
+    display: center;
+    text-align: center;
 }
