@@ -1,6 +1,5 @@
 
 // random number 1-4
-
 const randomNumber = (min, max) => {
     min = Math.ceil(min);
     max = Math.floor(max);
@@ -11,9 +10,9 @@ randomNumber(1, 4);
 
 
 //random number lights up
-
 document.querySelector(".start");
 let startButton = document.querySelector(".start");
+
 
 let simonGame = {
     SEQUENCE :[],
@@ -21,7 +20,7 @@ let simonGame = {
     score :0,
 };
 
-
+//Start button - pushes random number to sequence
 startButton.addEventListener("click", () => {
     simonGame.SEQUENCE.push(randomNumber(1, 4));
     display(simonGame.SEQUENCE);
@@ -29,6 +28,8 @@ startButton.addEventListener("click", () => {
         
 });
 
+
+//Restart button - clears game
 document.querySelector(".restart");
 let restartButton = document.querySelector(".restart");
 
@@ -36,9 +37,8 @@ restartButton.addEventListener("click", () => {
     restart();
 })
 
-
+//displays lights
 const display = (arr) => {
-    // loop through the array
     for (let i=0;i<arr.length;i++){
         setTimeout(()=>{lightUp(arr[i])},1000*i);
 
@@ -54,7 +54,7 @@ const lightUp = (num) => {
     buttonSound(num);
 }
     
-
+//Sound Effects!
 const buttonSound=(num)=>{
     if (num===1){
     playSound("https://s3.amazonaws.com/freecodecamp/simonSound1.mp3");
@@ -70,14 +70,14 @@ const buttonSound=(num)=>{
     }
 };
     
-
+//Turns lights off
 const lightOff = (num) => {
     let element = document.getElementById('button-' + num);
     element.classList.remove('btn-selected');
 
 }
 
-
+//Pushes selected buttons into array
 const getButtons = () => {
     var listarray = new Array();
     var select = document.getElementsByClassName('btn-selected');
@@ -87,9 +87,8 @@ const getButtons = () => {
     };
 }
 
-
+// User - when click...
 const colourButtons = document.getElementsByClassName('colour');
-
 
 for (let i = 0; i < colourButtons.length; i++) {
     
@@ -123,7 +122,7 @@ for (let i = 0; i < colourButtons.length; i++) {
     );
 }
 
-
+//RESTART
 const restart = () => {
     simonGame.SEQUENCE = [];
     clearCounter();
@@ -131,10 +130,12 @@ const restart = () => {
     enable();
 }
 
+//Clears counter
 const clearCounter = () => {
     simonGame.COUNTER = 0;
 }
 
+//Play sound - audio
 function playSound(audio){
     const mySound = new sound (audio);
     mySound.play();
@@ -154,16 +155,17 @@ function sound(src) {
     }
 }
 
-
+// disbable start button
 function disable() {
     document.querySelector(".start").disabled = true;
 }
 
+// enable start button
 function enable() {
     document.querySelector(".start").disabled = false;
 }
 
-
+//Change Score - add one and clear
 const changeScore = (newScore) => {
     document.getElementById("myButton1").value=newScore;
     simonGame.score = newScore;
